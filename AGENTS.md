@@ -9,4 +9,4 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Uploaded submission images live in a private storage bucket and are shared with the external Make.com grading webhook via long-lived signed links, because public buckets are blocked in this workspace.
+- All app data and file uploads go through the user's own external Supabase project via src/lib/external-supabase.ts, not Lovable Cloud, by explicit user choice. Uploaded images are shared with the Make.com webhook via long-lived signed links.
