@@ -70,8 +70,8 @@ const extractAiPayload = (rawResult: unknown): AiPayload => {
   if (Array.isArray(rawResult)) return extractAiPayload(rawResult[0]);
   if (!rawResult || typeof rawResult !== 'object') throw new Error('Invalid AI response');
   const result = rawResult as AiPayload;
-  if (result.data && typeof result.data === 'object') return result.data as AiPayload;
-  if (result.result && typeof result.result === 'object') return result.result as AiPayload;
+  if (result["data"] && typeof result["data"] === 'object') return result["data"] as AiPayload;
+  if (result["result"] && typeof result["result"] === 'object') return result["result"] as AiPayload;
   return result;
 };
 
@@ -81,7 +81,7 @@ const getStringValue = (payload: AiPayload, keys: string[], fallback: string): s
 };
 
 const getSuggestedExercises = (payload: AiPayload): SuggestedExercise[] => {
-  const rawExercises = payload.bai_tap_de_xuat ?? payload.suggested_exercises ?? payload.suggestedExercises ?? payload.exercises;
+  const rawExercises = payload["bai_tap_de_xuat"] ?? payload["suggested_exercises"] ?? payload["suggestedExercises"] ?? payload["exercises"];
   if (!Array.isArray(rawExercises)) return [];
   const exercises = rawExercises.map((item, index): SuggestedExercise | null => {
     if (typeof item === 'string') return { id: index + 1, question: item, answer: '' };
