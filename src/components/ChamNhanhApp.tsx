@@ -443,7 +443,6 @@ function GradingView({ students, pastStudents, selectedStudentId, onSelectStuden
             <div className="class-info-field">
               <label>Họ và tên học sinh</label>
               <input type="text" value={studentName} onChange={(event) => setStudentName(event.target.value)} placeholder="Nhập tên học sinh" disabled={isGrading} />
-              <datalist id="student-list">{students.map((s) => <option key={s.id} value={s.full_name} />)}</datalist>
             </div>
           </div>
           <div className="report-code-row">
@@ -506,7 +505,7 @@ function StudentCombobox({ students, pastStudents, className, studentName, subje
       </button>
       {open && (
         <div className="combo-panel">
-          <div className="combo-search"><Search size={15} /><input autoFocus value={query} onChange={(event) => setQuery(event.target.value)} onKeyDown={(event) => { if (event.key === 'Enter') { event.preventDefault(); if (filtered.length === 1 && exists) { onPick(filtered[0]); close(); } else create(); } if (event.key === 'Escape') close(); }} placeholder="Tìm hoặc gõ tên học sinh mới..." /></div>
+          <div className="combo-search"><Search size={15} /><input autoFocus value={query} onChange={(event) => setQuery(event.target.value)} onKeyDown={(event) => { if (event.key === 'Enter') { event.preventDefault(); if (filtered.length === 1 && exists) { onPick(filtered[0]!); close(); } else create(); } if (event.key === 'Escape') close(); }} placeholder="Tìm hoặc gõ tên học sinh mới..." /></div>
           <div className="combo-list">
             <span className="combo-group">{className ? `Đã chấm · Lớp ${className}` : 'Học sinh đã chấm'}</span>
             {filtered.length === 0 && <div className="combo-empty">Không tìm thấy học sinh</div>}
