@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Uploaded submission images live in a private storage bucket and are shared with the external Make.com grading webhook via long-lived signed links, because public buckets are blocked in this workspace.
