@@ -14,7 +14,139 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      assignments: {
+        Row: {
+          ai_score: number | null
+          created_at: string
+          id: string
+          image_url: string | null
+          knowledge_gap: string | null
+          max_score: number
+          student_id: string
+          submission_date: string
+          teacher_notes: string | null
+        }
+        Insert: {
+          ai_score?: number | null
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          knowledge_gap?: string | null
+          max_score?: number
+          student_id: string
+          submission_date?: string
+          teacher_notes?: string | null
+        }
+        Update: {
+          ai_score?: number | null
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          knowledge_gap?: string | null
+          max_score?: number
+          student_id?: string
+          submission_date?: string
+          teacher_notes?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "assignments_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "students"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      grading_reports: {
+        Row: {
+          answer_key_url: string | null
+          assignment_name: string | null
+          class_name: string | null
+          created_at: string
+          detailed_feedback: string | null
+          file_name: string | null
+          id: string
+          image_url: string | null
+          knowledge_gaps: string | null
+          max_score: number
+          report_code: string | null
+          score: number | null
+          student_id: string | null
+          student_name: string | null
+          subject: string | null
+          suggested_exercises: Json | null
+        }
+        Insert: {
+          answer_key_url?: string | null
+          assignment_name?: string | null
+          class_name?: string | null
+          created_at?: string
+          detailed_feedback?: string | null
+          file_name?: string | null
+          id?: string
+          image_url?: string | null
+          knowledge_gaps?: string | null
+          max_score?: number
+          report_code?: string | null
+          score?: number | null
+          student_id?: string | null
+          student_name?: string | null
+          subject?: string | null
+          suggested_exercises?: Json | null
+        }
+        Update: {
+          answer_key_url?: string | null
+          assignment_name?: string | null
+          class_name?: string | null
+          created_at?: string
+          detailed_feedback?: string | null
+          file_name?: string | null
+          id?: string
+          image_url?: string | null
+          knowledge_gaps?: string | null
+          max_score?: number
+          report_code?: string | null
+          score?: number | null
+          student_id?: string | null
+          student_name?: string | null
+          subject?: string | null
+          suggested_exercises?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "grading_reports_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "students"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      students: {
+        Row: {
+          created_at: string
+          full_name: string
+          grade_level: string
+          id: string
+          subject: string
+        }
+        Insert: {
+          created_at?: string
+          full_name: string
+          grade_level: string
+          id?: string
+          subject: string
+        }
+        Update: {
+          created_at?: string
+          full_name?: string
+          grade_level?: string
+          id?: string
+          subject?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
