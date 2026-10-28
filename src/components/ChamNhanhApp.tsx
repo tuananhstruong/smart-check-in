@@ -21,7 +21,7 @@ import {
   Users,
   X,
 } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase } from '@/lib/external-supabase';
 import { downloadGradingReport } from '@/lib/pdf';
 
 type Student = {
